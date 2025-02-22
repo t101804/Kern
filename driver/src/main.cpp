@@ -1,40 +1,25 @@
 #include <ntifs.h>
-#include <ntstrsafe.h>
 
-#define DRIVER_NAME L"repdriver"
-#define SYMBOLIC_LINK L"\\DosDevices\\" DRIVER_NAME
-#define DRIVER_PATH L"\\Device\\" DRIVER_NAME
 
-const UNICODE_STRING gSymbolicLink = RTL_CONSTANT_STRING(SYMBOLIC_LINK);
-const UNICODE_STRING gDriverPath = RTL_CONSTANT_STRING(DRIVER_PATH);
+#define DRIVER_NAME L"replicant"
+#define SYMBOLIC_LINK L"\\DosDevices\\replicant"
+#define DRIVER_PATH L"\\Device\\replicant"
+#define DRIVER_FULL L"\\Driver\\replicant"
 
 //------------------------------------------------------------------------------
 // Forward declarations for functions from the Windows kernel ( Undocumented )
 //------------------------------------------------------------------------------
-extern "C" {
+extern "C" { //undocumented windows internal functions (exported by ntoskrnl)
     NTKERNELAPI NTSTATUS IoCreateDriver(PUNICODE_STRING DriverName, PDRIVER_INITIALIZE InitializationFunction);
-    NTKERNELAPI NTSTATUS MmCopyVirtualMemory(
-        PEPROCESS SourceProcess,
-        PVOID SourceAddress,
-        PEPROCESS TargetProcess,
-        PVOID TargetAddress,
-        SIZE_T BufferSize,
-        KPROCESSOR_MODE PreviousMode,
-        PSIZE_T ReturnSize
-    );
+    NTKERNELAPI NTSTATUS MmCopyVirtualMemory(PEPROCESS SourceProcess, PVOID SourceAddress, PEPROCESS TargetProcess, PVOID TargetAddress, SIZE_T BufferSize, KPROCESSOR_MODE PreviousMode, PSIZE_T ReturnSize);
 }
 
 //------------------------------------------------------------------------------
 // Logging functionality encapsulated in its own namespace
 //------------------------------------------------------------------------------
 namespace logging {
-    inline void debug(const char* text) {
-#ifdef DEBUG
-
-        KdPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, text);
-#else
-        UNREFERENCED_PARAMETER(text);
-#endif
+    inline static void debug(const char* text) {;
+        KdPrintEx((DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, text));
     }
 } // namespace logging
 
@@ -105,14 +90,9 @@ namespace driver {
 				status = STATUS_NOT_FOUND;
 				break;
 			}
-            char concat_string[256];
-            NTSTATUS status = RtlStringCchPrintfA(
-                concat_string,
-                sizeof(concat_string),
-                "Received IOCTL_INIT with PID: %d\n",
-                buffer->target_pid
-            );
-            logging::debug(concat_string);
+         
+            KdPrintEx((DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Target PID: %p\n", buffer->target_pid));
+          
 			break;
 		case codes::read:
 			if (target_process == nullptr) {
@@ -142,13 +122,7 @@ namespace driver {
                 buffer->return_size = return_size;
             }
             break;
-			/*SIZE_T return_size = 0;
-			if (!NT_SUCCESS(MmCopyVirtualMemory(target_process, buffer->target_address, PsGetCurrentProcess(), buffer->buffer_address, buffer->size, KernelMode, &return_size))) {
-				logging::debug("Failed to read memory\n");
-				break;
-			}
-			buffer->return_size = return_size;
-			break;*/
+	
 		case codes::write:
 			if (target_process == nullptr) {
 				logging::debug("Received IOCTL_WRITE without a target process\n");
@@ -191,21 +165,22 @@ namespace driver {
 } // namespace driver
 
 // Main driver function
-NTSTATUS main_krnl(PDRIVER_OBJECT driver_obj, PUNICODE_STRING registery_path) {
-	// if we dont use any of the parameter we use unrefereced parameter
+NTSTATUS real_main(PDRIVER_OBJECT driver_obj, PUNICODE_STRING registery_path) {
+    logging::debug("Initializing driver\n");
     UNREFERENCED_PARAMETER(registery_path);
-    RtlInitUnicodeString((PUNICODE_STRING)&gDriverPath, DRIVER_PATH); 
-
+    UNICODE_STRING dev_name, sym_link;
+    RtlInitUnicodeString(&dev_name, DRIVER_PATH);
 	// Create device object
-	PDEVICE_OBJECT dev_obj = nullptr;
-	NTSTATUS status = IoCreateDevice(driver_obj, 0, (PUNICODE_STRING)&gDriverPath, FILE_DEVICE_UNKNOWN, FILE_DEVICE_SECURE_OPEN, FALSE, &dev_obj);
+	PDEVICE_OBJECT dev_obj;
+	NTSTATUS status = IoCreateDevice(driver_obj, 0, &dev_name, FILE_DEVICE_UNKNOWN, FILE_DEVICE_SECURE_OPEN, FALSE, &dev_obj);
     if (status != STATUS_SUCCESS) {
 		logging::debug("Failed to create device object\n");
 		return status;
     }
+
 	logging::debug("Device object created\n");
-	RtlInitUnicodeString((PUNICODE_STRING)&gSymbolicLink, SYMBOLIC_LINK);
-	status = IoCreateSymbolicLink((PUNICODE_STRING)&gSymbolicLink, (PUNICODE_STRING)&gDriverPath);
+	RtlInitUnicodeString(&sym_link, SYMBOLIC_LINK);
+	status = IoCreateSymbolicLink(&sym_link, &dev_name);
     if (status != STATUS_SUCCESS) {
         logging::debug("Failed to create symbolic link\n");
         return status;
@@ -220,18 +195,14 @@ NTSTATUS main_krnl(PDRIVER_OBJECT driver_obj, PUNICODE_STRING registery_path) {
     driver_obj->MajorFunction[IRP_MJ_DEVICE_CONTROL] = driver::control_io;
 
 	ClearFlag(dev_obj->Flags, DO_DEVICE_INITIALIZING);
-	logging::debug("Driver initialized\n");
+	logging::debug("Driver success initialized\n");
     return status;
 }
 
 // Driver entry point
-extern "C" NTSTATUS DriverEntry(PDRIVER_OBJECT DriverObject, PUNICODE_STRING RegistryPath)
-{
-    UNREFERENCED_PARAMETER(DriverObject);
-    UNREFERENCED_PARAMETER(RegistryPath);
-
-    logging::debug("Hello, world!\n");
-    RtlInitUnicodeString((PUNICODE_STRING)&gDriverPath, L"\\Driver\\repdriver");
-    return IoCreateDriver((PUNICODE_STRING)&gDriverPath, &main_krnl);
-    //return STATUS_SUCCESS;
+NTSTATUS DriverEntry() {
+    UNICODE_STRING drv_name = {};
+    RtlInitUnicodeString(&drv_name, DRIVER_FULL);
+    logging::debug("Creating a driver\n");
+    return IoCreateDriver(&drv_name, &real_main);
 }

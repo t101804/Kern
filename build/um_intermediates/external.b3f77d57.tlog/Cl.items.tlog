@@ -1,1 +1,19 @@
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui_demo.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_demo.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui_draw.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_draw.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui_impl_dx11.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_impl_dx11.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui_impl_win32.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_impl_win32.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui_tables.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_tables.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.90\imgui_widgets.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_widgets.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_demo.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_demo.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_draw.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_draw.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_impl_dx11.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_impl_dx11.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_impl_win32.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_impl_win32.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_tables.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_tables.obj
+D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_widgets.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_widgets.obj
+D:\CPPproject\repdriver\external-fivem-um\src\game\game.cpp;D:\CPPproject\repdriver\build\um_intermediates\game.obj
 D:\CPPproject\repdriver\external-fivem-um\src\main.cpp;D:\CPPproject\repdriver\build\um_intermediates\main.obj
+D:\CPPproject\repdriver\external-fivem-um\src\utils\driver.cpp;D:\CPPproject\repdriver\build\um_intermediates\driver.obj
+D:\CPPproject\repdriver\external-fivem-um\src\utils\log.cpp;D:\CPPproject\repdriver\build\um_intermediates\log.obj
+D:\CPPproject\repdriver\external-fivem-um\src\window\window.cpp;D:\CPPproject\repdriver\build\um_intermediates\window.obj
