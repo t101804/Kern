@@ -85,7 +85,7 @@ public:
 
 	// NOTE: if the user presses the x in the titlebar, the styles will not be set correctly. This can be fixed by checking the renderMenu bool every frame.
 	// (which is really bad for performance)
-	void Render();
+	void RenderMenuGui();
 
 	// small helper functions for the SetForeground function
 	bool IsWindowInForeground(HWND window) { return GetForegroundWindow() == window; }

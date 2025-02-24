@@ -20,7 +20,7 @@ void FiveM::Setup() {
 			return;
 		}
 		// attach to notepad
-        const DWORD process_id = driver_manager::get_process_id(L"ac_client.exe"); //
+        const DWORD process_id = driver_manager::get_process_id(fivem_app); //
 		if (!process_id) {
 			Logging::error_print("failed to get process id do you sure already opened fivem? FiveM_b2699_GTAProcess.exe");
             
@@ -30,9 +30,9 @@ void FiveM::Setup() {
 		}
 		driver_manager::attach_to_process(process_id);
         //driver_manager::get_base_address();
-        base_address = driver_manager::get_module_base_address(process_id, L"ac_client.exe");
+        base_address = driver_manager::get_module_base_address(process_id, fivem_app);
          //base_address = driver_manager::get_module_base_address(process_id, L"citizen-playernames-five.dll");
-		if (!base_address) {
+		/*if (!base_address) {
 			Logging::error_print("failed to get base address");
 			std::cin.get();
 			return;
@@ -43,8 +43,8 @@ void FiveM::Setup() {
         const auto healthAddress = localPlayerAddress + 0xF8;
         write_mem<int>(healthAddress, 10000000);
         Logging::debug_print("Local Player address: " + std::to_string(localPlayerAddress));
-        Logging::debug_print("Activated health cheat write mem");
-        //FiveM::RenderUpdate();
+        Logging::debug_print("Activated health cheat write mem");*/
+        FiveM::RenderUpdate();
 	/*	auto world = read_mem<uintptr_t>(base_address + offset::world);
 		auto replay = read_mem<uintptr_t>(base_address + offset::replay);
 		auto viewport = read_mem<uintptr_t>(base_address + offset::viewport);*/
@@ -61,7 +61,7 @@ struct EntityList_t {
 };
 
 void FiveM::RenderUpdate() {
-
+    sdk.InitOffset();
 	while (GlobalsConfig.Run) {
         std::vector<CPed> temp_pedlist;
         if (base_address == 0) {
@@ -103,8 +103,8 @@ void FiveM::RenderUpdate() {
 void FiveM::RenderEsp() {
 	CPed* pLocal = &local;
     static CPed target = CPed();
-    Logging::debug_print("esp rendered");
-    Logging::debug_print("GameWorld :" + std::to_string(GameWorld));
+    //Logging::debug_print("esp rendered");
+    //Logging::debug_print("GameWorld :" + std::to_string(GameWorld));
     float MinFov = 9999.f;
     float MinDistance = 9999.f;
     Vector2 Center = Vector2(GlobalsConfig.GameRect.right / 2.f, GlobalsConfig.GameRect.bottom / 2.f);

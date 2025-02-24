@@ -1,6 +1,7 @@
 #include "cped.h"
 #include "../../utils/driver.h"
 #include "../../Utils/Math/math.h"
+#include "../../Utils/Log/log.h"
 
 bool CPed::GetPlayer(uintptr_t& address)
 {
@@ -17,6 +18,7 @@ bool CPed::Update()
 
     // PedData
     m_fHealth = read_mem<float>(address + sdk.m_fHealth);
+    //Logging::debug_print("PedData Health: " + std::to_string(m_fHealth));
     m_pVecLocation = read_mem<Vector3>(address + sdk.m_vecLocation);
 
     if (IsDead())

@@ -166,7 +166,7 @@
     <ClCompile Include="src\Utils\driver.cpp" />
     <ClCompile Include="src\Utils\Log\log.cpp" />
     <ClCompile Include="src\Utils\Math\math.cpp" />
-    <ClCompile Include="src\Window\window.cpp" />
+    <ClCompile Include="src\Window\Overlay\Overlay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\ImGui 1.90\imconfig.h" />
@@ -193,7 +193,7 @@
     <ClInclude Include="src\Utils\Header.h" />
     <ClInclude Include="src\Utils\Log\log.h" />
     <ClInclude Include="src\Utils\Math\math.h" />
-    <ClInclude Include="src\Window\window.hpp" />
+    <ClInclude Include="src\Window\Overlay\overlay.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ext\SimpleMath\SimpleMath.inl" />

@@ -30,13 +30,13 @@ struct Cfg
     // Visual
     bool ESP = true;
     bool ESP_NPC = false;
-    bool ESP_Box = false;
+    bool ESP_Box = true;
     bool ESP_BoxFilled = false;
     bool ESP_Line = false;
     bool ESP_Name = false;
-    bool ESP_Skeleton = false;
+    bool ESP_Skeleton = true;
     bool ESP_Distance = false;
-    bool ESP_HealthBar = false;
+    bool ESP_HealthBar = true;
     int ESP_BoxType = 1;
     float ESP_MaxDistance = 500.f;
 

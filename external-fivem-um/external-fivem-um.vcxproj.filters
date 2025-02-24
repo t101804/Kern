@@ -18,9 +18,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ext\ImGui 1.90\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -87,12 +84,12 @@
     <ClCompile Include="src\Utils\Math\math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Window\Overlay\Overlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\driver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Window\window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ext\ImGui 1.90\imconfig.h">
@@ -162,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Math\math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window\Overlay\overlay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

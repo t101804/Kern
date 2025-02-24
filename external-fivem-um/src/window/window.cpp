@@ -284,12 +284,7 @@ void Overlay::CreateOverlay(const wchar_t* window_name)
 
 	printf("[>>] Overlay Created\n");
 }
-
-void Overlay::DestroyOverlay()
-{
-	DestroyWindow(overlay);
-	UnregisterClass(wc.lpszClassName, wc.hInstance);
-}
+W
 
 bool Overlay::CreateImGui()
 {
@@ -372,7 +367,7 @@ void Overlay::EndRender()
 	//swap_chain->Present(0U, 0U);
 }
 
-void Overlay::Render()
+void Overlay::RenderMenuGui()
 {
 	// Setup
 	ImVec4* colors = ImGui::GetStyle().Colors;

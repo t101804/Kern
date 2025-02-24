@@ -21,4 +21,4 @@ D:\CPPproject\repdriver\external-fivem-um\src\Utils\Config\config.h;D:\CPPprojec
 D:\CPPproject\repdriver\external-fivem-um\src\Utils\driver.cpp;D:\CPPproject\repdriver\build\um_intermediates\driver.obj
 D:\CPPproject\repdriver\external-fivem-um\src\Utils\Log\log.cpp;D:\CPPproject\repdriver\build\um_intermediates\log.obj
 D:\CPPproject\repdriver\external-fivem-um\src\Utils\Math\math.cpp;D:\CPPproject\repdriver\build\um_intermediates\math.obj
-D:\CPPproject\repdriver\external-fivem-um\src\Window\window.cpp;D:\CPPproject\repdriver\build\um_intermediates\window.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Window\Overlay\Overlay.cpp;D:\CPPproject\repdriver\build\um_intermediates\Overlay.obj
