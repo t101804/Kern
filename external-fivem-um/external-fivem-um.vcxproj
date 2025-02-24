@@ -157,11 +157,16 @@
     <ClCompile Include="ext\ImGui 1.91\imgui_impl_win32.cpp" />
     <ClCompile Include="ext\ImGui 1.91\imgui_tables.cpp" />
     <ClCompile Include="ext\ImGui 1.91\imgui_widgets.cpp" />
-    <ClCompile Include="src\game\game.cpp" />
+    <ClCompile Include="src\Game\Cped\cped.cpp" />
+    <ClCompile Include="src\Game\game.cpp" />
+    <ClCompile Include="src\Game\sdk.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\utils\driver.cpp" />
-    <ClCompile Include="src\utils\log.cpp" />
-    <ClCompile Include="src\window\window.cpp" />
+    <ClCompile Include="src\Utils\Config\Config.cpp" />
+    <ClCompile Include="src\Utils\Config\config.h" />
+    <ClCompile Include="src\Utils\driver.cpp" />
+    <ClCompile Include="src\Utils\Log\log.cpp" />
+    <ClCompile Include="src\Utils\Math\math.cpp" />
+    <ClCompile Include="src\Window\window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\ImGui 1.90\imconfig.h" />
@@ -179,11 +184,19 @@
     <ClInclude Include="ext\ImGui 1.91\imstb_rectpack.h" />
     <ClInclude Include="ext\ImGui 1.91\imstb_textedit.h" />
     <ClInclude Include="ext\ImGui 1.91\imstb_truetype.h" />
-    <ClInclude Include="src\game\game.h" />
-    <ClInclude Include="src\utils\color.hpp" />
-    <ClInclude Include="src\utils\driver.h" />
-    <ClInclude Include="src\utils\log.h" />
-    <ClInclude Include="src\window\window.hpp" />
+    <ClInclude Include="ext\SimpleMath\SimpleMath.h" />
+    <ClInclude Include="src\Game\Cped\cped.h" />
+    <ClInclude Include="src\Game\game.h" />
+    <ClInclude Include="src\Game\sdk.h" />
+    <ClInclude Include="src\Utils\Log\color.hpp" />
+    <ClInclude Include="src\Utils\driver.h" />
+    <ClInclude Include="src\Utils\Header.h" />
+    <ClInclude Include="src\Utils\Log\log.h" />
+    <ClInclude Include="src\Utils\Math\math.h" />
+    <ClInclude Include="src\Window\window.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ext\SimpleMath\SimpleMath.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

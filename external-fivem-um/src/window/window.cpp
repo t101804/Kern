@@ -1,7 +1,7 @@
 #include "window.hpp"
-
 #include <dwmapi.h>
 #include <stdio.h>
+#include "../Utils/Config/Config.h"
 
 // declaration of the ImGui_ImplWin32_WndProcHandler function
 // basically integrates ImGui with the Windows message loop so ImGui can process input and events
@@ -374,8 +374,52 @@ void Overlay::EndRender()
 
 void Overlay::Render()
 {
-	ImGui::SetNextWindowSize({ 250, 250 });
-	ImGui::Begin("cheat", &RenderMenu, ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoScrollbar);
+	// Setup
+	ImVec4* colors = ImGui::GetStyle().Colors;
+	ImGuiStyle& style = ImGui::GetStyle();
+	static float DefaultSpacing = style.ItemSpacing.y;
+	static int Index = 0;
+	static int BindingID = 0;
+
+	ImGui::SetNextWindowBgAlpha(0.975f);
+	ImGui::SetNextWindowSize(ImVec2(725.f, 450.f));
+
+	ImGui::Begin("FiveMeow", &RenderMenu, ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("##LeftChild", ImVec2(ImGui::GetContentRegionAvail().x / 2.f - 16.f, ImGui::GetContentRegionAvail().y), false);
+	ImGui::Spacing();
+	ImGui::Text("Visual");
+	ImGui::Separator();
+	ImGui::Spacing();
+	ImGui::Checkbox("ESP", &GlobalsConfig.ESP);
+	ImGui::NewLine();
+	ImGui::Spacing();
+
+	ImGui::Text("ESP Options");
+	ImGui::Separator();
+	ImGui::Spacing();
+
+	ImGui::Checkbox("Box", &GlobalsConfig.ESP_Box);
+	ImGui::Checkbox("BoxFilled", &GlobalsConfig.ESP_BoxFilled);
+	ImGui::Checkbox("Line", &GlobalsConfig.ESP_Line);
+	ImGui::Checkbox("Name", &GlobalsConfig.ESP_Name);
+	ImGui::Checkbox("Skeleton", &GlobalsConfig.ESP_Skeleton);
+	ImGui::Checkbox("Distance", &GlobalsConfig.ESP_Distance);
+	ImGui::Checkbox("HealthBar", &GlobalsConfig.ESP_HealthBar);
+	
+	ImGui::EndChild();
+	//ImGui::BeginChild("##RightChild", ImVec2(ImGui::GetContentRegionAvail().x, ImGui::GetContentRegionAvail().y), false);
+
+	// Calculate available width and text width
+	//float availWidth = ImGui::GetContentRegionAvail().x;
+	//float textWidth = ImGui::CalcTextSize("Setting").x;
+
+	//// Set the cursor position so that the taaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	//ImGui::SetCursorPosX(availWidth - textWidth);
+	//ImGui::Text("Setting");
+	//ImGui::Separator();
+	//ImGui::Spacing();
+	//ImGui::Checkbox("Bx", &GlobalsConfig.ESP_Box);
+	//ImGui::EndChild();
 
 	ImGui::End();
 }

@@ -18,7 +18,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\window\window.cpp">
+    <ClCompile Include="src\Window\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ext\ImGui 1.90\imgui.cpp">
@@ -42,7 +42,7 @@
     <ClCompile Include="ext\ImGui 1.90\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\game.cpp">
+    <ClCompile Include="src\Game\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ext\ImGui 1.91\imgui.cpp">
@@ -66,18 +66,33 @@
     <ClCompile Include="ext\ImGui 1.91\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\driver.cpp">
+    <ClCompile Include="src\Utils\driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\log.cpp">
+    <ClCompile Include="src\Utils\Log\log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Config\config.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Config\Config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\sdk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Cped\cped.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Math\math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\utils\driver.h">
+    <ClInclude Include="src\Utils\driver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\window\window.hpp">
+    <ClInclude Include="src\Window\window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ext\ImGui 1.90\imconfig.h">
@@ -104,7 +119,7 @@
     <ClInclude Include="ext\ImGui 1.90\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\game.h">
+    <ClInclude Include="src\Game\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ext\ImGui 1.91\imgui.h">
@@ -128,11 +143,31 @@
     <ClInclude Include="ext\ImGui 1.91\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\log.h">
+    <ClInclude Include="src\Utils\Log\log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\color.hpp">
+    <ClInclude Include="src\Utils\Log\color.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\sdk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\SimpleMath\SimpleMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Cped\cped.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\Math\math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ext\SimpleMath\SimpleMath.inl">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
