@@ -12,8 +12,13 @@ D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_impl_dx11.cpp;D:\
 D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_impl_win32.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_impl_win32.obj
 D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_tables.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_tables.obj
 D:\CPPproject\repdriver\external-fivem-um\ext\ImGui 1.91\imgui_widgets.cpp;D:\CPPproject\repdriver\build\um_intermediates\imgui_widgets.obj
-D:\CPPproject\repdriver\external-fivem-um\src\game\game.cpp;D:\CPPproject\repdriver\build\um_intermediates\game.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Game\Cped\cped.cpp;D:\CPPproject\repdriver\build\um_intermediates\cped.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Game\game.cpp;D:\CPPproject\repdriver\build\um_intermediates\game.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Game\sdk.cpp;D:\CPPproject\repdriver\build\um_intermediates\sdk.obj
 D:\CPPproject\repdriver\external-fivem-um\src\main.cpp;D:\CPPproject\repdriver\build\um_intermediates\main.obj
-D:\CPPproject\repdriver\external-fivem-um\src\utils\driver.cpp;D:\CPPproject\repdriver\build\um_intermediates\driver.obj
-D:\CPPproject\repdriver\external-fivem-um\src\utils\log.cpp;D:\CPPproject\repdriver\build\um_intermediates\log.obj
-D:\CPPproject\repdriver\external-fivem-um\src\window\window.cpp;D:\CPPproject\repdriver\build\um_intermediates\window.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Utils\Config\Config.cpp;D:\CPPproject\repdriver\build\um_intermediates\Config.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Utils\Config\config.h;D:\CPPproject\repdriver\build\um_intermediates\config.h.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Utils\driver.cpp;D:\CPPproject\repdriver\build\um_intermediates\driver.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Utils\Log\log.cpp;D:\CPPproject\repdriver\build\um_intermediates\log.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Utils\Math\math.cpp;D:\CPPproject\repdriver\build\um_intermediates\math.obj
+D:\CPPproject\repdriver\external-fivem-um\src\Window\window.cpp;D:\CPPproject\repdriver\build\um_intermediates\window.obj

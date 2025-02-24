@@ -5,7 +5,7 @@
 #include "Cped/cped.h"
 
 // for debug because i'm not yet implementing the fivem features. i even not yet adding the offset lol XD
-#define fivem_app L"FiveM_b2699_GTAProcess"
+#define fivem_app L"FiveM_b2699_GTAProcess.exe"
 
 
 class FiveM {

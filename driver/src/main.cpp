@@ -119,6 +119,7 @@ namespace driver {
                 if (!NT_SUCCESS(status)) {
                     logging::debug("Failed to read memory\n");
                 }
+                logging::debug("successfully to read memory\n");
                 buffer->return_size = return_size;
             }
             break;
@@ -148,6 +149,7 @@ namespace driver {
                 if (!NT_SUCCESS(status)) {
                     logging::debug("Failed to write memory\n");
                 }
+                logging::debug("successfully to write memory\n");
                 buffer->return_size = return_size;
             }
             break;

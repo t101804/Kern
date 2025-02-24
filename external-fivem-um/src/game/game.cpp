@@ -13,21 +13,25 @@ int bone = 0;
 const int ReadCount = 256;
 
 void FiveM::Setup() {
-		bool driver = driver_manager::find_driver("\\\\.\\replican");
+		bool driver = driver_manager::find_driver("\\\\.\\replicant");
 		if (!driver) {
 			Logging::error_print("Failed to find driver");
 			std::cin.get();
 			return;
 		}
 		// attach to notepad
-		const DWORD process_id = driver_manager::get_process_id(fivem_app);
+        const DWORD process_id = driver_manager::get_process_id(L"ac_client.exe"); //
 		if (!process_id) {
-			Logging::error_print("failed to get process id do you sure already opened fivem?");
+			Logging::error_print("failed to get process id do you sure already opened fivem? FiveM_b2699_GTAProcess.exe");
+            
+
 			std::cin.get();
 			return;
 		}
 		driver_manager::attach_to_process(process_id);
-		base_address = driver_manager::get_module_base_address(process_id, fivem_app);
+        //driver_manager::get_base_address();
+        base_address = driver_manager::get_module_base_address(process_id, L"ac_client.exe");
+         //base_address = driver_manager::get_module_base_address(process_id, L"citizen-playernames-five.dll");
 		if (!base_address) {
 			Logging::error_print("failed to get base address");
 			std::cin.get();
@@ -35,7 +39,12 @@ void FiveM::Setup() {
 		}
 		Logging::debug_print("Base address: " + std::to_string(base_address));
 		Logging::debug_print("Process ID: " + std::to_string(process_id));
-		
+        const auto localPlayerAddress = read_mem<std::uintptr_t>(base_address + 0x10F4F4); 
+        const auto healthAddress = localPlayerAddress + 0xF8;
+        write_mem<int>(healthAddress, 10000000);
+        Logging::debug_print("Local Player address: " + std::to_string(localPlayerAddress));
+        Logging::debug_print("Activated health cheat write mem");
+        //FiveM::RenderUpdate();
 	/*	auto world = read_mem<uintptr_t>(base_address + offset::world);
 		auto replay = read_mem<uintptr_t>(base_address + offset::replay);
 		auto viewport = read_mem<uintptr_t>(base_address + offset::viewport);*/
@@ -55,15 +64,18 @@ void FiveM::RenderUpdate() {
 
 	while (GlobalsConfig.Run) {
         std::vector<CPed> temp_pedlist;
-
+        if (base_address == 0) {
+            Logging::error_print("base_address error");
+            continue;
+        }
         GameWorld = read_mem<uintptr_t>(base_address + sdk.world);
         local.address = read_mem<uintptr_t>(GameWorld + 0x8);
         ViewPort = read_mem<uintptr_t>(base_address + sdk.viewport);
-
+        Logging::debug_print("GameWorld :"+std::to_string(GameWorld));
         uintptr_t ReplayInterface = read_mem<uintptr_t>(base_address + sdk.replay);
         uintptr_t EntityListPtr = read_mem<uintptr_t>(ReplayInterface + 0x18);
         uintptr_t entitylist_addr = read_mem<uintptr_t>(EntityListPtr + 0x100);
-
+        Logging::debug_print("ReplayInterface :" + std::to_string(ReplayInterface));
         EntityList_t base = read_mem<EntityList_t>(entitylist_addr), * list = &base;
 
         for (int i = 0; i < ReadCount; i++)
@@ -91,7 +103,8 @@ void FiveM::RenderUpdate() {
 void FiveM::RenderEsp() {
 	CPed* pLocal = &local;
     static CPed target = CPed();
-
+    Logging::debug_print("esp rendered");
+    Logging::debug_print("GameWorld :" + std::to_string(GameWorld));
     float MinFov = 9999.f;
     float MinDistance = 9999.f;
     Vector2 Center = Vector2(GlobalsConfig.GameRect.right / 2.f, GlobalsConfig.GameRect.bottom / 2.f);

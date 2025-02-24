@@ -65,6 +65,12 @@ DWORD driver_manager::get_process_id(const wchar_t* process_name) {
 	CloseHandle(snapshot);
 	return process_id;
 }
+//uintptr_t driver_manager::get_base_address(DWORD process_id)  {
+//	char pModule[128]{};
+//
+//	GetModuleBaseNameA("FiveM_b2699_GTAProcess", nullptr, pModule, sizeof(pModule)); // FiveM_b2699_GTAProcess
+//	return get_module_base_address(process_id,pModule);
+//}
 
 std::uintptr_t driver_manager::get_module_base_address(DWORD process_id, const wchar_t* module_name) {
 	std::uintptr_t base_address = 0;

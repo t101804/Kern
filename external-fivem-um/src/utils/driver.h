@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <cstdint>
+#include <psapi.h>
 
 namespace codes {
     constexpr ULONG init = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x696, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
@@ -28,6 +29,7 @@ public:
 	static void write_virtual_memory(PVOID address, PVOID buffer, DWORD size);
 	static void attach_to_process(DWORD process_id);
 	static DWORD get_process_id(const wchar_t* process_name);
+	//static uintptr_t get_base_address();
 	static std::uintptr_t get_module_base_address(DWORD process_id, const wchar_t* module_name);
 };
 
@@ -39,5 +41,5 @@ T read_mem(const std::uintptr_t address) {
 }
 template<typename T>
 void write_mem(const std::uintptr_t address, const T& buffer) {
-	driver_manager::write_virtual_memory(reinterpret_cast<PVOID>(address), &buffer, sizeof(T));
+	driver_manager::write_virtual_memory(reinterpret_cast<PVOID>(address), (PVOID)&buffer, sizeof(T));
 }

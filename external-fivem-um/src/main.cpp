@@ -23,9 +23,10 @@ int main() {
 		if (overlay.RenderMenu) {
 			overlay.Render();
 		}
-		if (&GlobalsConfig.ESP) {
+		
+		/*if (&GlobalsConfig.ESP) {
 			fivem->RenderEsp();
-		}
+		}*/
 		overlay.EndRender();
 	}
 
